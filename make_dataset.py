@@ -53,10 +53,9 @@ def main():
 
         if not os.path.exists(class_name):
             os.makedirs(class_name)
-            shutil.move(name, class_name)
+            cv2.imwrite(class_name, frame)
 
-
-        cv2.imwrite(name, frame)
+        # cv2.imwrite(name, frame)
         currentframe += 30  ##chnage 5 with the number of frames. Here 5 means capture frame after every 5 frames
         ###usually videos are 30fps so if here 30 is provided a frame will be captures after every second.
 
@@ -69,9 +68,9 @@ def main():
     stream.stop()
 
 if __name__ == '__main__':
-    from sys import argv
+    # from sys import argv
     try:
-        main(argv)
+        main()
     except KeyboardInterrupt:
         pass
     sys.exit()
