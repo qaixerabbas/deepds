@@ -1,4 +1,5 @@
 import cv2
+import shutil
 import os
 from vidgear.gears import CamGear
 import argparse
@@ -49,9 +50,10 @@ def main():
         name = path + "./frames" + str(currentframe) + ".jpg"
         print("classifying..." + name)
         class_name = classify_image(name)
-        
+
         if not os.path.exists(class_name):
             os.makedirs(class_name)
+            shutil.move(name, class_name)
 
 
         cv2.imwrite(name, frame)
