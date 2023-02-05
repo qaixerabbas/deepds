@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
 
+print("Starting to read stream...")
 stream = CamGear(
     source="https://www.youtube.com/watch?v=oQyKL_jBz0Q&ab_channel=MLTNA7X",
     stream_mode=True,
@@ -18,16 +19,18 @@ stream = CamGear(
     logging=True,
 ).start()
 
+print("Reading imagenet class data files")
 imagenet_classes = open("utils/imagenet_2012.txt").read().splitlines()
 imagenet_classes = ['background'] + imagenet_classes
 
+print("initializing the openvino models")
 ie = Core()
 model = ie.read_model(model="model/v3-small_224_1.0_float.xml")
 compiled_model = ie.compile_model(model=model, device_name="CPU")
 output_layer = compiled_model.output(0)
 
-def classify_image(image):
-    image = cv2.cvtColor(cv2.imread(image), code=cv2.COLOR_BGR2RGB)
+def classify_image(image_frame):
+    image = cv2.cvtColor(cv2.imread(image_frame), code=cv2.COLOR_BGR2RGB)
     input_image = cv2.resize(src=image, dsize=(224, 224))
     input_image = np.expand_dims(input_image, 0)
     result_infer = compiled_model([input_image])[output_layer]
@@ -48,13 +51,21 @@ def main():
 
         # cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
 
-        name = path + "./frames" + str(currentframe) + ".jpg"
-        print("classifying..." + name)
-        class_name = classify_image(name)
+        name = path + str(currentframe) + ".jpg"
+        print("Reading..." + name)
+        temp_img = 'temp.png'
+        cv2.imwrite(temp_img, frame)
+        print(f"Classifying image {temp_img}")
+        class_name = classify_image(temp_img)
+        print(f"#############==> Predicted Class Name: {class_name} <==#########################")
+        print(f"Removing temporary image {class_name}")
+        os.remove(temp_img)
 
-        if not os.path.exists(class_name):
+        if not os.path.exists(path + str(class_name)):
+            print(f"Making dir {class_name}")
             os.makedirs(class_name)
-            cv2.imwrite(class_name, frame)
+            print(f"Writing frames to dir {class_name}")
+            cv2.imwrite(name, frame)
 
         # cv2.imwrite(name, frame)
         currentframe += 30  ##chnage 5 with the number of frames. Here 5 means capture frame after every 5 frames
