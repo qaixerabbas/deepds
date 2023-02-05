@@ -1,6 +1,14 @@
 import cv2
 import os
 from vidgear.gears import CamGear
+import argparse
+import sys
+import requests
+import re
+import json
+import matplotlib.pyplot as plt
+import numpy as np
+from openvino.runtime import Core
 
 stream = CamGear(
     source="https://www.youtube.com/watch?v=oQyKL_jBz0Q&ab_channel=MLTNA7X",
@@ -9,30 +17,59 @@ stream = CamGear(
     logging=True,
 ).start()
 
-# this should be the path where u want ur images
-# path  = 'C:\\Users\\user\\Desktop\\Capture Frames from Online YouTube Video\\cars\\'
-path = "D:\\github codes\\test\\"
+imagenet_classes = open("utils/imagenet_2012.txt").read().splitlines()
+imagenet_classes = ['background'] + imagenet_classes
 
-currentframe = 0
-while True:
+ie = Core()
+model = ie.read_model(model="model/v3-small_224_1.0_float.xml")
+compiled_model = ie.compile_model(model=model, device_name="CPU")
+output_layer = compiled_model.output(0)
 
-    frame = stream.read()  ### using functions from vidGear module
-    if frame is None:
-        break
+def classify_image(image):
+    image = cv2.cvtColor(cv2.imread(image), code=cv2.COLOR_BGR2RGB)
+    input_image = cv2.resize(src=image, dsize=(224, 224))
+    input_image = np.expand_dims(input_image, 0)
+    result_infer = compiled_model([input_image])[output_layer]
+    result_index = np.argmax(result_infer)
+    name = imagenet_classes[result_index]
+    return name
 
-    cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
+def main():
+    path = "D:\\github codes\\test\\"
 
-    name = path + "./frames" + str(currentframe) + ".jpg"
-    print("Creating..." + name)
+    currentframe = 0
+    while True:
 
-    cv2.imwrite(name, frame)
-    currentframe += 5  ##chnage 5 with the number of frames. Here 5 means capture frame after every 5 frames
-    ###usually videos are 30fps so if here 30 is provided a frame will be captures after every second.
+        frame = stream.read()  ### using functions from vidGear module
+        if frame is None:
+            break
 
-    key = cv2.waitKey(1) & 0xFF
+        # cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
 
-    if key == ord("q"):
-        break
+        name = path + "./frames" + str(currentframe) + ".jpg"
+        print("classifying..." + name)
+        class_name = classify_image(name)
+        
+        if not os.path.exists(class_name):
+            os.makedirs(class_name)
 
-cv2.destroyAllWindows()
-stream.stop()
+
+        cv2.imwrite(name, frame)
+        currentframe += 30  ##chnage 5 with the number of frames. Here 5 means capture frame after every 5 frames
+        ###usually videos are 30fps so if here 30 is provided a frame will be captures after every second.
+
+        key = cv2.waitKey(1) & 0xFF
+
+        if key == ord("q"):
+            break
+
+    cv2.destroyAllWindows()
+    stream.stop()
+
+if __name__ == '__main__':
+    from sys import argv
+    try:
+        main(argv)
+    except KeyboardInterrupt:
+        pass
+    sys.exit()
