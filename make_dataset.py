@@ -40,7 +40,7 @@ def classify_image(image_frame):
     return name
 
 def main():
-    path = "D:\\github codes\\test\\"
+    default_path = "D:\\github codes\\test\\"
 
     currentframe = 0
     while True:
@@ -57,23 +57,26 @@ def main():
         cv2.imwrite(temp_img, frame)
         print(f"Classifying image {temp_img}")
         class_name = classify_image(temp_img)
+        # print(type(class_name))
         print(f"#############==> Predicted Class Name: {class_name} <==#########################")
         print(f"Removing temporary image {class_name}")
         os.remove(temp_img)
 
-        if not os.path.exists(path + str(class_name)):
+
+        if not os.path.exists(default_path + str(class_name)):
             print(f"Making dir {class_name}")
-            os.makedirs(path + class_name)
+            os.makedirs(default_path + class_name)
             # path = path + str(class_name)
-            print(f"Entering into {class_name}")
-            os.chdir(path + class_name)
-            print(os.getcwd())
-            print(f"Writing frames to dir {path + class_name}")
-            name = path + str(class_name) + str(currentframe) + ".jpg" # test/labrador/0.jpg
+            print(f"Entering into {default_path + class_name}")
+            # default_path=default_path+str(class_name)
+            os.chdir(default_path + class_name)
+            print(f"Writing frames to dir {default_path + class_name}")
+            name = str(class_name) + str(currentframe) + ".jpg" # test/labrador/0.jpg
             cv2.imwrite(name, frame)
-        elif os.path.exists(path + str(class_name)):
-            os.chdir(path + class_name)
-            name = path + str(class_name) + str(currentframe) + ".jpg"
+        elif os.path.exists(default_path + str(class_name)):
+            # default_path=default_path+str(class_name)
+            os.chdir(default_path + class_name)
+            name =  str(class_name) + str(currentframe) + ".jpg"
             cv2.imwrite(name, frame)
         else:
             pass
