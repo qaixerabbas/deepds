@@ -51,8 +51,8 @@ def main():
 
         # cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
 
-        name = path + str(currentframe) + ".jpg"
-        print("Reading..." + name)
+        # name = path + str(currentframe) + ".jpg" # test/0.jpg
+        # print("Reading..." + name)
         temp_img = 'temp.png'
         cv2.imwrite(temp_img, frame)
         print(f"Classifying image {temp_img}")
@@ -63,9 +63,20 @@ def main():
 
         if not os.path.exists(path + str(class_name)):
             print(f"Making dir {class_name}")
-            os.makedirs(class_name)
-            print(f"Writing frames to dir {class_name}")
+            os.makedirs(path + class_name)
+            # path = path + str(class_name)
+            print(f"Entering into {class_name}")
+            os.chdir(path + class_name)
+            print(os.getcwd())
+            print(f"Writing frames to dir {path + class_name}")
+            name = path + str(class_name) + str(currentframe) + ".jpg" # test/labrador/0.jpg
             cv2.imwrite(name, frame)
+        elif os.path.exists(path + str(class_name)):
+            os.chdir(path + class_name)
+            name = path + str(class_name) + str(currentframe) + ".jpg"
+            cv2.imwrite(name, frame)
+        else:
+            pass
 
         # cv2.imwrite(name, frame)
         currentframe += 30  ##chnage 5 with the number of frames. Here 5 means capture frame after every 5 frames
