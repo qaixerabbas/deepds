@@ -11,6 +11,16 @@ import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
 
+parser = argparse.ArgumentParser(description="Program to auto make datasets.")
+
+parser.add_argument("--video-link", required=True, type=str, help="Target video link to YouTube video")
+
+parser.add_argument(
+    "--destination", required=True, type=str, help="Target destination to save dataset"
+)
+
+args = parser.parse_args()
+
 print("Starting to read stream...")
 stream = CamGear(
     source="https://www.youtube.com/watch?v=oQyKL_jBz0Q&ab_channel=MLTNA7X",
