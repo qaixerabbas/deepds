@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
 
-parser = argparse.ArgumentParser(description="Program to auto make datasets.")
+parser = argparse.ArgumentParser(prog = "make-dataset", description="Program to auto make datasets.")
 
 parser.add_argument("--videolink", required=True, type=str, help="Target video link to YouTube video")
 
