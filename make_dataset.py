@@ -13,7 +13,7 @@ from openvino.runtime import Core
 
 parser = argparse.ArgumentParser(description="Program to auto make datasets.")
 
-parser.add_argument("--video-link", required=True, type=str, help="Target video link to YouTube video")
+parser.add_argument("--videolink", required=True, type=str, help="Target video link to YouTube video")
 
 parser.add_argument(
     "--destination", required=True, type=str, help="Target destination to save dataset"
@@ -21,9 +21,10 @@ parser.add_argument(
 
 args = parser.parse_args()
 
+# https://www.youtube.com/watch?v=oQyKL_jBz0Q&ab_channel=MLTNA7X
 print("Starting to read stream...")
 stream = CamGear(
-    source="https://www.youtube.com/watch?v=oQyKL_jBz0Q&ab_channel=MLTNA7X",
+    source=args.videolink,
     stream_mode=True,
     time_delay=1,
     logging=True,
@@ -50,7 +51,7 @@ def classify_image(image_frame):
     return name
 
 def main():
-    default_path = "D:\\github codes\\test\\"
+    default_path = args.destination # "D:\\github codes\\test2\\" ==> \\ must be used with \\ in the end as well
 
     currentframe = 0
     while True:
