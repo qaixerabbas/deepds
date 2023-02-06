@@ -1,12 +1,12 @@
 import cv2
-import shutil
+# import shutil
 import os
 from vidgear.gears import CamGear
 import argparse
 import sys
-import requests
-import re
-import json
+# import requests
+# import re
+# import json
 import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
