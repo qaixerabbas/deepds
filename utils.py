@@ -49,6 +49,9 @@ def classify_using_pytorch(img_path):  # chk if valid image path
     return image_class
 
 
+"""
+# trying this function to make sure this works
 img_path = "test_imgs/30.jpg"
 img_class = classify_using_pytorch(img_path)
 print(img_class)
+"""
