@@ -6,11 +6,11 @@ import warnings
 
 warnings.filterwarnings("ignore")
 
-model = torchvision.models.squeezenet1_1(pretrained=False)
-model.load_state_dict(torch.load("model/squeezenet1_1.pth"))
-
 
 def classify_using_pytorch(img_path):  # chk if valid image path
+
+    model = torchvision.models.squeezenet1_1(pretrained=False)
+    model.load_state_dict(torch.load("model/squeezenet1_1.pth"))
 
     input_image = Image.open(img_path)
     preprocess = transforms.Compose(
