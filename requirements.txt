@@ -1,0 +1,5 @@
+opencv-python==4.7.0
+vidgear==0.3.0
+argparse==1.1
+matplotlib==3.6.3
+numpy==1.23.4
