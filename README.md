@@ -43,3 +43,31 @@ Base class for video clips.
       Default is 0.
     """
     ```
+
+Another example of docstring
+
+```
+    Adds basic date-based features based to the data frame.
+    --------------------
+    Arguments:
+    - df (pandas DF): dataset
+    - date_var (str): name of the date feature
+    - drop (bool): whether to drop the original date feature
+    - time (bool): whether to include time-based features
+    --------------------
+    Returns:
+    - pandas DF with new features
+    
+    --------------------
+    Examples:
+    
+    # create data frame
+    data = {'age': [27, np.nan, 30], 
+            'height': [170, 168, 173], 
+            'gender': ['female', 'male', np.nan],
+            'date_of_birth': [np.datetime64('1993-02-10'), np.nan, np.datetime64('1990-04-08')]}
+    df = pd.DataFrame(data)
+    # add date features
+    from dptools import add_date_features
+    df_new = add_date_features(df, date_vars = 'date_of_birth')
+```    
