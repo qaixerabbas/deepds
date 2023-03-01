@@ -6,7 +6,6 @@ This is verion 0.0 for my project
 Example for documentation + doc strings
 
 ```
-"""
 Base class for video clips.
     See ``VideoFileClip``, ``ImageClip`` etc. for more user-friendly classes.
     
@@ -41,10 +40,9 @@ Base class for video clips.
       Indicates which clip is rendered on top when two clips overlap in
       a CompositeVideoClip. The highest number is rendered on top.
       Default is 0.
-    """
-    ```
+      ```
 
-Another example of docstring
+### Another example of docstring
 
 ```
     Adds basic date-based features based to the data frame.
