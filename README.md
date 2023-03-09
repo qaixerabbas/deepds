@@ -1,5 +1,6 @@
 # make_dataset
 Code for the make_dataset package
+need to rename this package as deepds => deepdatasets
 
 This is verion 0.0 for my project
 
