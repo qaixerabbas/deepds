@@ -1,5 +1,6 @@
 import cv2
 # import shutil
+# need to add a function for local video dataset and local model maker and update argparase
 import os
 from vidgear.gears import CamGear
 import argparse
