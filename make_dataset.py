@@ -3,6 +3,7 @@ import cv2
 # need to add a function for local video dataset and local model maker and update argparase
 import os
 from vidgear.gears import CamGear
+from vidgear.gears import VideoGear
 import argparse
 import sys
 # import requests
@@ -12,9 +13,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
 
-parser = argparse.ArgumentParser(prog = "make-dataset", description="Program to auto make datasets.", epilog="That's how create datasets Simple and Nice")
+parser = argparse.ArgumentParser(prog = "DeepDS", description="Python program to auto generate datasets for computer vision applications.", epilog="That's how you create datasets Simple and Nice")
 
-parser.add_argument("--videolink", required=True, type=str, help="Target video link to YouTube video")
+parser.add_argument("--video_path", required=True, type=str, help="Target video link to YouTube video")
 
 parser.add_argument(
     "--destination", required=True, type=str, help="Target destination to save dataset"
@@ -25,7 +26,7 @@ args = parser.parse_args()
 # https://www.youtube.com/watch?v=oQyKL_jBz0Q&ab_channel=MLTNA7X
 print("Starting to read stream...")
 stream = CamGear(
-    source=args.videolink,
+    source=args.video_path,
     stream_mode=True,
     time_delay=1,
     logging=True,
