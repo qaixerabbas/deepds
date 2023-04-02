@@ -1,6 +1,8 @@
 import cv2
 # import shutil
 # need to add a function for local video dataset and local model maker and update argparase
+# above task can be done using vidgear so no need for OpenCV's dedicated function
+# reference => https://abhitronix.github.io/vidgear/latest/gears/videogear/usage/
 import os
 from vidgear.gears import CamGear
 from vidgear.gears import VideoGear
