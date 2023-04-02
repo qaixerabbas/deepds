@@ -10,3 +10,4 @@ Pillow==9.5.0
 torch==1.13.1
 torchvision==0.14.1
 vidgear==0.3.0
+yt-dlp==2023.3.4
