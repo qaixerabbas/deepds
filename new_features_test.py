@@ -32,7 +32,8 @@ def classify_image(image_frame):
     result_infer = compiled_model([input_image])[output_layer]
     result_index = np.argmax(result_infer)
     name = imagenet_classes[result_index]
-    name = name.split()[1]
+    name = name.split(",")[0]
+    name = name.split(" ", 1)[1]
     return name
 
 
