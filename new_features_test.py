@@ -22,7 +22,45 @@ parser.add_argument(
 )
 
 
+def load_classes_and_model(model_path, class_path):
+    """
+    Used to load classes and models object from local filesystem
+    -----
+
+    Parameters:
+        model_path(str): path to the model on disk
+        class_path(str): path to the class file name on disk
+
+    Returns:
+        compiled_model_path(modelFile): Model object used for classification
+        imagnet_class(list): Possible classes for image classification model
+        output_layer(LayerObject): Final layer object of model
+
+    """
+    ie = Core()
+    model = ie.read_model(model=model_path)
+    compiled_model = ie.compile_model(model=model, device_name="CPU")
+    output_layer = compiled_model.output(0)
+    print("Reading imagenet class data files")
+    imagenet_classes = open(class_path).read().splitlines()
+    imagenet_classes = ["background"] + imagenet_classes
+    print("initializing the openvino models")
+    return output_layer, imagenet_classes, compiled_model
+
+
 def classify_image(image_frame):
+    """
+    Used for classification of input image
+    -----
+
+    Parameters:
+        image_frame (str): Temp image generated during start_streaming function execution
+
+    Returns:
+        name (str): Class prediction by OpenVino Model
+
+
+    """
     output_layer, imagenet_classes, compiled_model = load_classes_and_model(
         model_path, class_path
     )
@@ -37,12 +75,22 @@ def classify_image(image_frame):
     return name
 
 
-args = parser.parse_args()
-
-video_path = args.video_path
-
-
 def start_streaming(stream_object):
+    """
+    Function used to start streaming and main logic of the program
+
+    The function takes a stream object and then captures frames, classifies
+    the intermediate frames and sorts them into classified respective classes
+    based directories.
+    -----
+
+    Parameters:
+        stream_object(object): VidGear or CamGear stream object to start streaming
+
+    Returns:
+        None
+
+    """
     default_path = (
         args.destination
     )  # "D:\\github codes\\test2\\" ==> \\ must be used with \\ in the end as well
@@ -96,23 +144,13 @@ def start_streaming(stream_object):
     stream.stop()
 
 
-def load_classes_and_model(model_path, class_path):
-    ie = Core()
-    model = ie.read_model(model=model_path)
-    compiled_model = ie.compile_model(model=model, device_name="CPU")
-    output_layer = compiled_model.output(0)
-    print("Reading imagenet class data files")
-    imagenet_classes = open(class_path).read().splitlines()
-    imagenet_classes = ["background"] + imagenet_classes
-    print("initializing the openvino models")
-    return output_layer, imagenet_classes, compiled_model
-
-
 model_path = "D:\\github codes\\deepds\\model\\v3-small_224_1.0_float.xml"
 class_path = "D:\\github codes\\deepds\\utils\\imagenet_2012.txt"
 
 if __name__ == "__main__":
     # from sys import argv
+    args = parser.parse_args()
+    video_path = args.video_path
     allowed_video_format = [".mp4", ".ogg", ".mkv", ".mov", ".avi", ".webm"]
     try:
         if args.video_path[-4:] in allowed_video_format:
