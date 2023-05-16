@@ -1,4 +1,5 @@
 import cv2
+
 # import shutil
 # need to add a function for local video dataset and local model maker and update argparase ( done in new_features_test.py file)
 # above task can be done using vidgear so no need for OpenCV's dedicated function
@@ -8,6 +9,7 @@ from vidgear.gears import CamGear
 from vidgear.gears import VideoGear
 import argparse
 import sys
+
 # import requests
 # import re
 # import json
@@ -15,9 +17,15 @@ import matplotlib.pyplot as plt
 import numpy as np
 from openvino.runtime import Core
 
-parser = argparse.ArgumentParser(prog = "DeepDS", description="Python program to auto generate datasets for computer vision applications.", epilog="That's how you create datasets Simple and Nice")
+parser = argparse.ArgumentParser(
+    prog="DeepDS",
+    description="Python program to auto generate datasets for computer vision applications.",
+    epilog="That's how you create datasets Simple and Nice",
+)
 
-parser.add_argument("--video_path", required=True, type=str, help="Target video link to YouTube video")
+parser.add_argument(
+    "--video_path", required=True, type=str, help="Target video link to YouTube video"
+)
 
 parser.add_argument(
     "--destination", required=True, type=str, help="Target destination to save dataset"
@@ -36,13 +44,14 @@ stream = CamGear(
 
 print("Reading imagenet class data files")
 imagenet_classes = open("utils/imagenet_2012.txt").read().splitlines()
-imagenet_classes = ['background'] + imagenet_classes
+imagenet_classes = ["background"] + imagenet_classes
 
 print("initializing the openvino models")
 ie = Core()
 model = ie.read_model(model="model/v3-small_224_1.0_float.xml")
 compiled_model = ie.compile_model(model=model, device_name="CPU")
 output_layer = compiled_model.output(0)
+
 
 def classify_image(image_frame):
     image = cv2.cvtColor(cv2.imread(image_frame), code=cv2.COLOR_BGR2RGB)
@@ -54,12 +63,14 @@ def classify_image(image_frame):
     name = name.split()[1]
     return name
 
+
 def main():
-    default_path = args.destination # "D:\\github codes\\test2\\" ==> \\ must be used with \\ in the end as well
+    default_path = (
+        args.destination
+    )  # "D:\\github codes\\test2\\" ==> \\ must be used with \\ in the end as well
 
     currentframe = 0
     while True:
-
         frame = stream.read()  ### using functions from vidGear module
         if frame is None:
             break
@@ -68,15 +79,16 @@ def main():
 
         # name = path + str(currentframe) + ".jpg" # test/0.jpg
         # print("Reading..." + name)
-        temp_img = 'temp.png'
+        temp_img = "temp.png"
         cv2.imwrite(temp_img, frame)
         print(f"Classifying image {temp_img}")
         class_name = classify_image(temp_img)
         # print(type(class_name))
-        print(f"#############==> Predicted Class Name: {class_name} <==#########################")
+        print(
+            f"#############==> Predicted Class Name: {class_name} <==#########################"
+        )
         print(f"Removing temporary image {class_name}")
         os.remove(temp_img)
-
 
         if not os.path.exists(default_path + str(class_name)):
             print(f"Making dir {class_name}")
@@ -86,12 +98,12 @@ def main():
             # default_path=default_path+str(class_name)
             os.chdir(default_path + class_name)
             print(f"Writing frames to dir {default_path + class_name}")
-            name = str(class_name) + str(currentframe) + ".jpg" # test/labrador/0.jpg
+            name = str(class_name) + str(currentframe) + ".jpg"  # test/labrador/0.jpg
             cv2.imwrite(name, frame)
         elif os.path.exists(default_path + str(class_name)):
             # default_path=default_path+str(class_name)
             os.chdir(default_path + class_name)
-            name =  str(class_name) + str(currentframe) + ".jpg"
+            name = str(class_name) + str(currentframe) + ".jpg"
             cv2.imwrite(name, frame)
         else:
             pass
@@ -108,11 +120,11 @@ def main():
     cv2.destroyAllWindows()
     stream.stop()
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     # from sys import argv
     try:
         main()
     except KeyboardInterrupt:
         pass
     sys.exit()
-    # exis the program
