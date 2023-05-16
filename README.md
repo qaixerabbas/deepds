@@ -1,4 +1,4 @@
-# make_dataset
+# Deep Dataset
 Code for the make_dataset package
 need to rename this package as deepds => deepdatasets
 
