@@ -97,7 +97,6 @@ def start_streaming(stream_object):
     stream = stream_object
     currentframe = 0
     while True:
-
         frame = stream.read()  # using functions from vidGear module
         if frame is None:
             break
