@@ -1,72 +1,75 @@
-# Deep Dataset
-Code for the make_dataset package
-need to rename this package as deepds => deepdatasets
+![Markdown symbol](https://github.com/qaixerabbas/deepds/blob/master/images/logo2.png)  
+<!-- <img src="./images/logo.png" alt="Image" width="900" height="300" style="display: flex; justify-content: center;"> -->
+<!-- <div style="display: flex; justify-content: center;"> -->
+<!--   <img src="./images/logo.png" alt="DeepDS logo" width="500" height="200"> -->
+<!-- </div> -->
 
-This is verion 0.0 for my project
+# What's DeepDS
+One command data creation for visual information processing (weakly/self-supervised labels)
 
-Example for documentation + doc strings
+Make your life easy :) 
 
+## Build your own dataset for object recognition and object detection/segmentation
+
+You can use this python code to download the frames of youtube video without downloading video. 
+
+### Step 1. pip install -r requirements.txt
+Then select the output directory where you want to save the frames (edit python code to set paths and directories)
+
+### Step 2. update the .py file 
+Add youtube video and output dir in python script
+
+### step 3. python <script-name.py>
+
+It will start capturing frames from youtube video and download it into the specified folders.
+
+
+
+Usage
+---
+Alternatively you can use the cli.py file if you do not want to manually modify the main script.
 ```
-Base class for video clips.
-    See ``VideoFileClip``, ``ImageClip`` etc. for more user-friendly classes.
-    
-    Parameters
-    ----------
-    is_mask
-      `True` if the clip is going to be used as a mask.
-      
-    Attributes
-    ----------
-    size
-      The size of the clip, (width,height), in pixels.
-    w, h
-      The width and height of the clip, in pixels.
-    is_mask
-      Boolean set to `True` if the clip is a mask.
-    make_frame
-      A function ``t-> frame at time t`` where ``frame`` is a
-      w*h*3 RGB array.
-    mask (default None)
-      VideoClip mask attached to this clip. If mask is ``None``,
-                The video clip is fully opaque.
-    audio (default None)
-      An AudioClip instance containing the audio of the video clip.
-    pos
-      A function ``t->(x,y)`` where ``x,y`` is the position
-      of the clip when it is composed with other clips.
-      See ``VideoClip.set_pos`` for more details
-    relative_pos
-      See variable ``pos``.
-    layer
-      Indicates which clip is rendered on top when two clips overlap in
-      a CompositeVideoClip. The highest number is rendered on top.
-      Default is 0.
-      ```
+>>> python cli.py --help
+>>> usage: downlaod_youtube_frames. [-h] --videolink VIDEOLINK --destination DESTINATION
 
-### Another example of docstring
+  Program to automatically download youtube images datasets.
 
+  optional arguments:
+    -h, --help            show this help message and exit
+    --videolink VIDEOLINK
+                         YouTube video link
+    --destination DESTINATION
+                         Target path to save imgz
+
+  A simple and nice cli script to create youtube datasets
 ```
-    Adds basic date-based features based to the data frame.
-    --------------------
-    Arguments:
-    - df (pandas DF): dataset
-    - date_var (str): name of the date feature
-    - drop (bool): whether to drop the original date feature
-    - time (bool): whether to include time-based features
-    --------------------
-    Returns:
-    - pandas DF with new features
-    
-    --------------------
-    Examples:
-    
-    # create data frame
-    data = {'age': [27, np.nan, 30], 
-            'height': [170, 168, 173], 
-            'gender': ['female', 'male', np.nan],
-            'date_of_birth': [np.datetime64('1993-02-10'), np.nan, np.datetime64('1990-04-08')]}
-    df = pd.DataFrame(data)
-    # add date features
-    from dptools import add_date_features
-    df_new = add_date_features(df, date_vars = 'date_of_birth')
-```    
+
+How to run on cli/terminal?
+
+Example run
+
+``` >>> python cli.py --videolink "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\dataset\test" ```
+
+Running like above example will start downloading the video frames into the provided destination. Optionally, you can provide ``` --showframe ``` argument in command line if you want to show the frames that are being saved to local disk.
+
+Example
+
+``` >>> python cli.py --videolink "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\dataset\test" --showframe ```
+
+NOTE: Make sure ``` --videolink ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
+
+### Todo
+
+- [ ] Add framecount in argparse 
+- [ ] work with any online videos ( YouTube + more )
+
+### In Progress
+
+- [ ] Working on improving readme, How-To and upload on PyPI. 
+
+### Done ✓
+
+- [x] Capturing frames from remote YouTube videos.
+- [x] merge this to deepds
+- [x] Saving frames to target directory.
+- [x] Cli.py file for easy usage.
