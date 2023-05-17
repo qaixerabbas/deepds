@@ -67,18 +67,20 @@ optional arguments:
 Powered by deeplearning
 ```
 
-How to run on cli/terminal?
-
 Example run
+---
 
-``` >>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test\\"```
+```
+ >>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test\\"
+```
 
-Optionally, you can provide ``` --showframe ``` argument in command line if you want to display current frames.
-Example
+Optionally, you can provide ``` --displayframe ``` argument in command line if you want to display current frames.
 
-``` >>> python cli.py --videolink "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test" --displayframe ```
+``` 
+>>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test" --displayframe 
+```
 
-NOTE: Make sure ``` --videolink ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
+NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
 
 ### Todo
 
