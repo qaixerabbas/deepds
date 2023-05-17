@@ -17,11 +17,18 @@ parser.add_argument(
     "--video_path",
     required=True,
     type=str,
-    help="Target video link to YouTube video or local video path",
+    help="Target video link to YouTube video or local video path.",
 )
 
 parser.add_argument(
-    "--destination", required=True, type=str, help="Target destination to save dataset"
+    "--destination", required=True, type=str, help="Target destination to save dataset."
+)
+
+parser.add_argument(
+    "--displayframe",
+    required=False,
+    action="store_true",
+    help="Display the frames currently being processed.",
 )
 
 
@@ -82,14 +89,15 @@ def start_streaming(stream_object):
     default_path = (
         args.destination
     )  # "D:\\github codes\\test2\\" ==> \\ must be used with \\ in the end as well
+    show_frame = args.displayframe
     stream = stream_object
     currentframe = 0
     while True:
         frame = stream.read()  # using functions from vidGear module
         if frame is None:
             break
-
-        cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
+        if show_frame:
+            cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
         temp_img = "temp.png"
         cv2.imwrite(temp_img, frame)
         print()
@@ -127,7 +135,7 @@ def start_streaming(stream_object):
             pass
 
         # cv2.imwrite(name, frame)
-        currentframe += 30  # chnage 5 with the number of frames. Here 5 means capture frame after every 5 frames
+        currentframe += 30  # change 5 with the number of frames. Here 5 means capture frame after every 5 frames
         # usually videos are 30fps so if here 30 is provided a frame will be captures after every second.
 
         key = cv2.waitKey(1) & 0xFF
