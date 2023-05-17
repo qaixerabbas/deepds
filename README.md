@@ -20,11 +20,10 @@ Once you have dataset, you can simply annotate these images for Detection/Segmen
 
 ### Prerequisites
 Before running the script, make sure you have the installed dependencies using the following command:
-<pre>
+
 ```
 pip install -r requirements.txt
 ```
-</pre>
 
 ### Step 1. pip install -r requirements.txt
 Then select the output directory where you want to save the frames (edit python code to set paths and directories)
