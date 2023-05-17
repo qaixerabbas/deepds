@@ -82,7 +82,7 @@ Optionally, you can provide ``` --displayframe ``` argument in command line if y
 
 NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
 
-### Todo
+#### Todo
 
 - [ ] Add a flag for skipping frames in video streams
 - [ ] Add custom model support 
@@ -90,11 +90,11 @@ NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings 
 - [ ] Add train_test_split function
 - [ ] Add support for loading open source datasets
 
-### In Progress
+#### In Progress
 
 - [ ] Working on improving readme and uploading to PyPI. 
 
-### Done ✓
+#### Done ✓
 
 - [x] Capture frames from local & YouTube videos without downloading.
 - [x] Create directories based on class predictions by deep learning model.
