@@ -7,9 +7,24 @@ One command data creation for visual information processing (weakly/self-supervi
 
 Make your life easy :) 
 
-## Build your own dataset for object recognition and object detection/segmentation
+## Build datasets for computer vision
 
-You can use this python code to download the frames of youtube video without downloading video. 
+You can use this script to create datasets with weak image annotations.
+
+### Why Weak Annotations?
+Labeling images is a time consuming process. In computer vision, classification labels are the easiest one to annotate input data for ML models. While bounding boxes (detection/localization) and segmentation (semantic/instance) are hard and tedious plus time consuming task. 
+
+Capturing individual images is a lot more time consuming process than capturing videos. This scripts accepts a video (local or YouTube video support) and allows to develop a dataset in ImageNet style annotations. Where each frame in the video is classified using a OpenVino optiimzed model (currently supports InceptionV3). Based on this information individual folders are created and associated images are transferred to the corresponding folders.
+
+Once you have dataset, you can simply annotate these images for Detection/Segmentation tasks. For classification, custom models are required, but using a ImageNet model might help in weak labels. The generated dataset can be used in Unsupervised/Self-supervised settings to pre-train a vision model. After that a small amount of labeled data is enuogh to train robust vision models.
+
+### Prerequisites
+Before running the script, make sure you have the installed dependencies using the following command:
+<pre>
+```
+pip install -r requirements.txt
+```
+</pre>
 
 ### Step 1. pip install -r requirements.txt
 Then select the output directory where you want to save the frames (edit python code to set paths and directories)
