@@ -23,7 +23,9 @@ Once you have dataset, you can simply annotate these images for Detection/Segmen
 The current InceptionV3 model is optimized for CPU so it's performance is not comparable with SOTA classification models. However, the predictions from this model are good enough to be used in weakly supervised training.
 
 ## Prerequisites
-**Recommended** Create a new virtual environment. For creating a new environment follow the instructions below:
+[**Recommended**] 
+
+Create a new virtual environment. For creating a new environment follow the instructions below:
 
 To create and activate a virtual environment in Windows, follow these steps:
 
@@ -46,6 +48,7 @@ Replace "myenv" with the name you provided in the previous step.
 ```
 pip install -r requirements.txt
 ```
+6. For [MacOS](https://programwithus.com/learn/python/pip-virtualenv-mac) and [Linux](https://www.geeksforgeeks.org/creating-python-virtual-environment-windows-linux/) please follow the instructions for creating & activating the virtual environment.
 
 Usage
 ---
@@ -82,7 +85,7 @@ Optionally, you can provide ``` --displayframe ``` argument in command line if y
 
 NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
 
-#### Todo
+### Todo
 
 - [ ] Add a flag for skipping frames in video streams
 - [ ] Add custom model support 
@@ -90,11 +93,11 @@ NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings 
 - [ ] Add train_test_split function
 - [ ] Add support for loading open source datasets
 
-#### In Progress
+### In Progress
 
 - [ ] Working on improving readme and uploading to PyPI. 
 
-#### Done ✓
+### Done ✓
 
 - [x] Capture frames from local & YouTube videos without downloading.
 - [x] Create directories based on class predictions by deep learning model.
