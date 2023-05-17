@@ -5,7 +5,7 @@
 
 
 # What's DeepDS
-One command data creation for visual information processing (weakly/self-supervised labels)
+One command data creation for visual information processing (weakly/self-supervised settings)
 
 Make your life easy :) 
 
