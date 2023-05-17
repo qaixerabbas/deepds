@@ -1,3 +1,10 @@
+"""
+Script Name: DeepDS cli.py
+Author: Qaiser Abbas
+Date: May 17, 2023
+Email: mqaiser617@gmail.com
+"""
+
 from vidgear.gears import VideoGear
 from vidgear.gears import CamGear
 import cv2
