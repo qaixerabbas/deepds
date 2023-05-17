@@ -100,3 +100,13 @@ NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings 
 - [x] Create directories based on class predictions by deep learning model.
 - [x] Arrange the images into a proper imageNet based annotations
 - [x] Add a showframe argument for displaying current frames
+
+### LIcense
+This project is licensed under the [MIT License](https://github.com/qaixerabbas/deepds/blob/master/LICENSE).
+
+### Acknowledgments
+This script was developed with the help of various open-source libraries and resources. I would like to acknowledge their contributions to the project:
+- OpenCV: https://opencv.org/
+- VidGear: https://github.com/abhiTronix/vidgear
+- OpenVino: https://github.com/openvinotoolkit/openvino
+- PyTorch: https://github.com/pytorch/pytorch
