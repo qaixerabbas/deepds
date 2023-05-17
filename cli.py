@@ -97,7 +97,9 @@ def start_streaming(stream_object):
         if frame is None:
             break
         if show_frame:
-            cv2.imshow("Output Frame", frame)  # optional if u want to show the frames
+            cv2.imshow(
+                "Current Output Frame", frame
+            )  # optional if u want to show the frames
         temp_img = "temp.png"
         cv2.imwrite(temp_img, frame)
         print()
@@ -115,15 +117,15 @@ def start_streaming(stream_object):
 
         if not os.path.exists(default_path + str(class_name)):
             print()
-            print(f"Making dir {class_name}")
+            print(f"Creating {class_name} directory.")
             print()
             os.makedirs(default_path + class_name)
             print()
-            print(f"Entering into {default_path + class_name}")
+            print(f"Navigating into {default_path + class_name}")
             print()
             os.chdir(default_path + class_name)
             print()
-            print(f"Writing frames to dir {default_path + class_name}")
+            print(f"Writing frames to {default_path + class_name}")
             print()
             name = str(class_name) + str(currentframe) + ".jpg"
             cv2.imwrite(name, frame)
