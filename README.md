@@ -1,8 +1,6 @@
-![Markdown symbol](https://github.com/qaixerabbas/deepds/blob/master/images/logo2.png)  
-<!-- <img src="./images/logo.png" alt="Image" width="900" height="300" style="display: flex; justify-content: center;"> -->
-<!-- <div style="display: flex; justify-content: center;"> -->
-<!--   <img src="./images/logo.png" alt="DeepDS logo" width="500" height="200"> -->
-<!-- </div> -->
+<p align="center">
+  <img src="./images/logo2.png">
+</p>
 
 # What's DeepDS
 One command data creation for visual information processing (weakly/self-supervised labels)
