@@ -156,8 +156,10 @@ def start_streaming(stream_object):
     stream.stop()
 
 
-model_path = "D:\\github codes\\deepds\\model\\v3-small_224_1.0_float.xml"
-class_path = "D:\\github codes\\deepds\\utils\\imagenet_2012.txt"
+model_file_name = "v3-small_224_1.0_float.xml"
+class_file_name = "imagenet_2012.txt"
+model_path = os.path.join(os.getcwd(), "model", model_file_name)
+class_path = os.path.join(os.getcwd(), "utils", class_file_name)
 
 if __name__ == "__main__":
     args = parser.parse_args()
