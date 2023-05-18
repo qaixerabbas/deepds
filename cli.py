@@ -13,6 +13,7 @@ import numpy as np
 from openvino.runtime import Core
 import os
 import sys
+import time
 
 parser = argparse.ArgumentParser(
     prog="DeepDS",
@@ -160,6 +161,7 @@ def start_streaming(stream_object):
 
 
 if __name__ == "__main__":
+    time_start = time.time()
     args = parser.parse_args()
     video_path = args.video_path
     allowed_video_format = [".mp4", ".ogg", ".mkv", ".mov", ".avi", ".webm"]
@@ -187,4 +189,7 @@ if __name__ == "__main__":
             )
     except KeyboardInterrupt:
         pass
+    time_end = time.time()
+    total_time = time_end - time_start
+    print(f"Total time taken to generate dataset: {total_time} seconds")
     sys.exit()
