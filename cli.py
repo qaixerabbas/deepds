@@ -38,6 +38,11 @@ parser.add_argument(
     help="Display the frames currently being processed.",
 )
 
+model_file_name = "v3-small_224_1.0_float.xml"
+class_file_name = "imagenet_2012.txt"
+model_path = os.path.join(os.getcwd(), "model", model_file_name)
+class_path = os.path.join(os.getcwd(), "utils", class_file_name)
+
 
 def load_classes_and_model(model_path: str, class_path: str):
     """To load classes and models object from local filesystem
@@ -143,9 +148,7 @@ def start_streaming(stream_object):
         else:
             pass
 
-        # cv2.imwrite(name, frame)
-        currentframe += 30  # change 5 with the number of frames. Here 5 means capture frame after every 5 frames
-        # usually videos are 30fps so if here 30 is provided a frame will be captures after every second.
+        currentframe += 1
 
         key = cv2.waitKey(1) & 0xFF
 
@@ -155,11 +158,6 @@ def start_streaming(stream_object):
     cv2.destroyAllWindows()
     stream.stop()
 
-
-model_file_name = "v3-small_224_1.0_float.xml"
-class_file_name = "imagenet_2012.txt"
-model_path = os.path.join(os.getcwd(), "model", model_file_name)
-class_path = os.path.join(os.getcwd(), "utils", class_file_name)
 
 if __name__ == "__main__":
     args = parser.parse_args()
