@@ -115,5 +115,5 @@ This script was developed with the help of various open-source libraries and res
 - PyTorch: https://github.com/pytorch/pytorch
 
 ### Limitations
-1. Currently, It only works with the OpenVino optimized models (.xml) files.
+1. Currently, It only works with the OpenVino optimized model (.xml) files.
 2. It only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
