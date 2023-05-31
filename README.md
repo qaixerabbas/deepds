@@ -1,17 +1,47 @@
+<h1 align="center">
+  <img src="./images/deepds.svg" height="200" width="200"> <br>
+  <b style="font-size: 26px">DeepDS<b> <br>
+</h1>
+<!--     <p align="center"> Version: 0.1.0 </p> -->
+    
 <p align="center">
-  <img src="./images/logo2.png"> <br>
-  Version: 0.1.0
+Grab your coffee and let me analyze the data :)
 </p>
+<!-- # What's DeepDS
+One command data creation for visual information processing (weakly/self-supervised settings) -->
+&nbsp;
 
+DeepDS is an **automatic Video Processing Python** tool that provides an easy-to-use command line interface to autoamte your data creation process for various machine learning tasks. It uses **OpenCV** and **VidGear** at the backend and uses **Optimized Deep Learning** algorithm to analyze and create your datasets with just a single command. 
 
-# What's DeepDS
-One command data creation for visual information processing (weakly/self-supervised settings)
+DeepDs primarily focuses on automation of repetetive tasks, and thereby lets ML practitionars & researchers/developers to easily create image datasets from online/offline videos. Additionally you can use your own trained ML models for custom dataset creation tasks.
+    
+The output of the data creation project will be directories containing images that are ready to be used for finetuning/training your ML models
+   
+    
+    - dataset
+      - Class 1
+        - img_01
+        - img_02
+        .
+        - img_n
+    
+      - Class 2
+        - img_01
+        - img_02
+        .
+        - img_n
+    
+      - Class N
+        - img_01
+        - img_02
+        .
+        - img_n
+    
+&nbsp;    
+    
+<!-- ## Build datasets for computer vision
 
-Make your life easy :) 
-
-## Build datasets for computer vision
-
-You can use this script to create datasets with weak image annotations.
+You can use this script to create datasets with weak image annotations. -->
 
 ## Why Weak Annotations?
 Labeling images is a time consuming process. In computer vision, classification labels are the easiest one to annotate input data for ML models. While bounding boxes (detection/localization) and segmentation (semantic/instance) are hard and tedious plus time consuming task. 
@@ -23,7 +53,6 @@ Once you have dataset, you can simply annotate these images for Detection/Segmen
 The current InceptionV3 model is optimized for CPU so it's performance is not comparable with SOTA classification models. However, the predictions from this model are good enough to be used in weakly supervised training.
 
 ## Prerequisites
-[**Recommended**] 
 
 Create a new virtual environment. For creating a new environment follow the instructions below:
 
