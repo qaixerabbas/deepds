@@ -146,3 +146,16 @@ This script was developed with the help of various open-source libraries and res
 ### Limitations
 1. Currently, It only works with the OpenVino optimized model (.xml) files.
 2. It only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
+    
+### Implementation Ideas
+``` FPS = 30
+Len(Video) = 5 mins
+Total frames = 5 * 60 * 30 => 9000 
+train = 70% of total frames => 6300
+test = 30% of total frames => 2700
+    for frame in frames:
+	if num(frame)<=6300
+	  move to train
+	else:
+	  move to test
+karpathy.github.io/2015/11/14/ai/ ```
