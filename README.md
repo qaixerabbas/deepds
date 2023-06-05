@@ -84,17 +84,18 @@ Usage
 Use cli.py file if you do not want to manually modify the main script.
 ```
 >>> python cli.py --help
->>> usage: DeepDS [-h] --video_path VIDEO_PATH --destination DESTINATION [--displayframe]
+>>> usage: DeepDS [-h] --video_path VIDEO_PATH --destination DESTINATION [--displayframe] [--custom_model CUSTOM_MODEL]
+              [--labels LABELS]
 
 Python script to auto generate datasets for computer vision applications.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --video_path VIDEO_PATH
-                        Target video link to YouTube video or local video path.
-  --destination DESTINATION
-                        Target destination to save dataset.
-  --displayframe        Display the frames currently being processed.
+  --video_path VIDEO_PATH	    ||  Target video link to YouTube video or local video path.
+  --destination DESTINATION  	    ||  Target destination to save dataset.
+  --displayframe             	    ||  Display the frames currently being processed.
+  --custom_model CUSTOM_MODEL       ||  Path to your custom model.
+  --labels LABELS       	    ||  Path to your labels file.
 
 Powered by deeplearning
 ```
@@ -103,21 +104,20 @@ Example run
 ---
 
 ```
- >>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test\\"
+ >>> python cli.py --video_path "https://www.youtube.com/watch?v=ffCWuQhj9Fo" --destination "D:\\dataset\\test2\\" --custom_model "D:\\dataset\\bees_keras_model.h5" --labels "D:\\dataset\\labels.txt"
 ```
-
+If you do not provide trained model and labels path, the script will automatically load ImageNet labels and pre-trained Intel OpenVino optimized Inception model for classification.
 Optionally, you can provide ``` --displayframe ``` argument in command line if you want to display current frames.
 
 ``` 
->>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test" --displayframe 
+>>> python cli.py --video_path "https://www.youtube.com/watch?v=ffCWuQhj9Fo" --destination "D:\\dataset\\test2\\" --custom_model "D:\\dataset\\bees_keras_model.h5" --labels "D:\\dataset\\labels.txt" --displayframe
 ```
 
-NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
+NOTE: Make sure ``` --video_path ```, ``` --destination ```, ``` --custom_model ```, ``` --labels ``` are both strings (enclosed in quotation marks)
 
 ### Todo
 
 - [ ] Add a flag for skipping frames in video streams
-- [ ] Add custom model support 
 - [ ] Work with any online videos
 - [ ] Add train_test_split function
 - [ ] Add support for loading open source datasets
@@ -132,6 +132,7 @@ NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings 
 - [x] Create directories based on class predictions by deep learning model.
 - [x] Arrange the images into a proper imageNet based annotations
 - [x] Add a showframe argument for displaying current frames
+- [x] Add custom model support 
 
 ### LIcense
 This project is licensed under the [MIT License](https://github.com/qaixerabbas/deepds/blob/master/LICENSE).
