@@ -10,7 +10,7 @@ Grab your coffee and let me analyze the data :)
 <!-- # What's DeepDS
 One command data creation for visual information processing (weakly/self-supervised settings) -->
 &nbsp;
-
+	  
 DeepDS is an **automatic Video Processing Python** tool that provides an easy-to-use command line interface to autoamte your data creation process for various machine learning tasks. It uses **OpenCV** and **VidGear** at the backend and uses **Optimized Deep Learning** algorithm to analyze and create your datasets with just a single command. 
 
 DeepDs primarily focuses on automation of repetetive tasks, and thereby lets ML practitionars & researchers/developers to easily create image datasets from online/offline videos. Additionally you can use your own trained ML models for custom dataset creation tasks.
