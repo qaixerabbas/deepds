@@ -113,7 +113,7 @@ Optionally, you can provide ``` --displayframe ``` argument in command line if y
 >>> python cli.py --video_path "https://www.youtube.com/watch?v=ffCWuQhj9Fo" --destination "D:\\dataset\\test2\\" --custom_model "D:\\dataset\\bees_keras_model.h5" --labels "D:\\dataset\\labels.txt" --displayframe
 ```
 
-NOTE: Make sure ``` --video_path ```, ``` --destination ```, ``` --custom_model ```, ``` --labels ``` are both strings (enclosed in quotation marks)
+NOTE: Make sure ``` --video_path ```, ``` --destination ```, ``` --custom_model ```, ``` --labels ``` are strings (enclosed in quotation marks)
 
 ### Todo
 
