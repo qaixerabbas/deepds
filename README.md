@@ -2,10 +2,15 @@
   <!-- <img src="./images/deepds.svg" height="200" width="200"> <br> -->
   <b style="font-size: 26px">DeepDS: Python Tool for Data Creation for Deep Learning & Computer Vision<b> <br>
 </h2>
+
+<!-- ![Javatpoint](https://zenodo.org/badge/DOI/10.5281/zenodo.8017696.svg) -->
+
 <p align="center">
-Grab your coffee and let me do the boring intelligent task :grinning:
+Grab your coffee and let me do the boring intelligent task :grinning: <br>
+<a href="https://doi.org/10.5281/zenodo.8017696"><img src="https://zenodo.org/badge/DOI/10.5281/zenodo.8017696.svg" alt="DOI"></a>
 </p>
-![Javatpoint](https://zenodo.org/badge/DOI/10.5281/zenodo.7801597.svg)  
+
+
 
 &nbsp;
 	  
