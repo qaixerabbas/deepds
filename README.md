@@ -10,7 +10,7 @@ Grab your coffee and let me analyze the data :)
 <!-- # What's DeepDS
 One command data creation for visual information processing (weakly/self-supervised settings) -->
 &nbsp;
-
+	  
 DeepDS is an **automatic Video Processing Python** tool that provides an easy-to-use command line interface to autoamte your data creation process for various machine learning tasks. It uses **OpenCV** and **VidGear** at the backend and uses **Optimized Deep Learning** algorithm to analyze and create your datasets with just a single command. 
 
 DeepDs primarily focuses on automation of repetetive tasks, and thereby lets ML practitionars & researchers/developers to easily create image datasets from online/offline videos. Additionally you can use your own trained ML models for custom dataset creation tasks.
@@ -44,6 +44,7 @@ The output of the data creation project will be directories containing images th
 You can use this script to create datasets with weak image annotations. -->
 
 ## Why Weak Annotations?
+	  
 Labeling images is a time consuming process. In computer vision, classification labels are the easiest one to annotate input data for ML models. While bounding boxes (detection/localization) and segmentation (semantic/instance) are hard and tedious plus time consuming task. 
 
 Capturing individual images is a lot more time consuming process than capturing videos. This scripts accepts a video (local or YouTube video support) and allows to develop a dataset in ImageNet style annotations. Where each frame in the video is classified using a OpenVino optiimzed model (currently supports InceptionV3). Based on this information individual folders are created and associated images are transferred to the corresponding folders.
@@ -84,17 +85,18 @@ Usage
 Use cli.py file if you do not want to manually modify the main script.
 ```
 >>> python cli.py --help
->>> usage: DeepDS [-h] --video_path VIDEO_PATH --destination DESTINATION [--displayframe]
+>>> usage: DeepDS [-h] --video_path VIDEO_PATH --destination DESTINATION [--displayframe] [--custom_model CUSTOM_MODEL]
+              [--labels LABELS]
 
 Python script to auto generate datasets for computer vision applications.
 
 optional arguments:
   -h, --help            show this help message and exit
-  --video_path VIDEO_PATH
-                        Target video link to YouTube video or local video path.
-  --destination DESTINATION
-                        Target destination to save dataset.
-  --displayframe        Display the frames currently being processed.
+  --video_path VIDEO_PATH	    ||  Target video link to YouTube video or local video path.
+  --destination DESTINATION  	    ||  Target destination to save dataset.
+  --displayframe             	    ||  Display the frames currently being processed.
+  --custom_model CUSTOM_MODEL       ||  Path to your custom model.
+  --labels LABELS       	    ||  Path to your labels file.
 
 Powered by deeplearning
 ```
@@ -103,50 +105,57 @@ Example run
 ---
 
 ```
- >>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test\\"
+ >>> python cli.py --video_path "https://www.youtube.com/watch?v=ffCWuQhj9Fo" --destination "D:\\dataset\\test2\\" --custom_model "D:\\dataset\\bees_keras_model.h5" --labels "D:\\dataset\\labels.txt"
 ```
-
+If you do not provide trained model and labels path, the script will automatically load ImageNet labels and pre-trained Intel OpenVino optimized Inception model for classification.
 Optionally, you can provide ``` --displayframe ``` argument in command line if you want to display current frames.
 
 ``` 
->>> python cli.py --video_path "https://www.youtube.com/watch?v=PWRg_wak9oI" --destination "D:\\dataset\\test" --displayframe 
+>>> python cli.py --video_path "https://www.youtube.com/watch?v=ffCWuQhj9Fo" --destination "D:\\dataset\\test2\\" --custom_model "D:\\dataset\\bees_keras_model.h5" --labels "D:\\dataset\\labels.txt" --displayframe
 ```
 
-NOTE: Make sure ``` --video_path ``` and ``` --destination ``` are both strings (enclosed in quotation marks)
+NOTE: Make sure ``` --video_path ```, ``` --destination ```, ``` --custom_model ```, ``` --labels ``` are strings (enclosed in quotation marks)
 
-### Todo
+## Todo
 
 - [ ] Add a flag for skipping frames in video streams
-- [ ] Add custom model support 
 - [ ] Work with any online videos
 - [ ] Add train_test_split function
 - [ ] Add support for loading open source datasets
 
-### In Progress
+## In Progress
 
 - [ ] Working on improving readme and uploading to PyPI. 
 
-### Done ✓
+## Done ✓
 
 - [x] Capture frames from local & YouTube videos without downloading.
 - [x] Create directories based on class predictions by deep learning model.
 - [x] Arrange the images into a proper imageNet based annotations
 - [x] Add a showframe argument for displaying current frames
+- [x] Add custom model support 
 
-### LIcense
+## LIcense
+	  
 This project is licensed under the [MIT License](https://github.com/qaixerabbas/deepds/blob/master/LICENSE).
 
-### Acknowledgments
+## Acknowledgments
+	  
 This script was developed with the help of various open-source libraries and resources. I would like to acknowledge their contributions to the project:
 - OpenCV: https://opencv.org/
 - VidGear: https://github.com/abhiTronix/vidgear
 - OpenVino: https://github.com/openvinotoolkit/openvino
 - PyTorch: https://github.com/pytorch/pytorch
 
-### Limitations
+## Limitations
+	  
 1. Currently, It only works with the OpenVino optimized model (.xml) files.
 2. It only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
-    
+
+## 🤝 Contributing
+
+Contributions are welcome! Feel free to open issues or submit PRs.
+	  
 ### Implementation Ideas
 ``` FPS = 30
 Len(Video) = 5 mins
