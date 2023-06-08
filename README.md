@@ -5,6 +5,8 @@
 <p align="center">
 Grab your coffee and let me do the boring intelligent task :grinning:
 </p>
+![Javatpoint](https://zenodo.org/badge/DOI/10.5281/zenodo.7801597.svg)  
+
 &nbsp;
 	  
 DeepDS is an **automatic Video Processing Python** tool that provides an easy-to-use command line interface to autoamte your data creation process for various machine learning / computer vision tasks. It uses **OpenCV** and **VidGear** at the backend and uses **Optimized Deep Learning** algorithm to analyze and create your datasets with just a single command. 
