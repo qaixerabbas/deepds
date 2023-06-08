@@ -160,7 +160,7 @@ Contributions are welcome! Feel free to open issues or submit PRs.
 
 ## Citation
 
-If you find this code useful in your research or project, please consider citing it:
+If you use this code in your research or project, please consider citing it:
 
 ```
 @misc{qaixerabbas/deepds,
