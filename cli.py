@@ -3,6 +3,7 @@ Script Name: deepds cli.py
 Author: Qaiser Abbas
 Date: June 8, 2023
 Email: mqaiser617@gmail.com
+Vesion: 1.0.0
 """
 
 from vidgear.gears import VideoGear
@@ -17,8 +18,8 @@ from utils.functions import classify_keras_style
 
 parser = argparse.ArgumentParser(
     prog="DeepDS",
-    description="Python script to auto generate datasets for computer vision applications.",
-    epilog="Powered by deeplearning",
+    description="Python script to auto generate datasets for computer vision applications development.",
+    epilog="powered by efficient deeplearning",
 )
 
 parser.add_argument(
