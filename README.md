@@ -131,6 +131,9 @@ This script was developed with the help of various open-source libraries and res
 5. It (Default Model) only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
 6. If you want to use a custom model, it should be in Keras trained model.
 
+## What Next?
+- Follow this [FastAI Image Classification](https://towardsdatascience.com/image-classification-using-fastai-v2-on-colab-33f3ebe9b5a3) tutorial to make a custom image classification model for your newly prepared image dataset. 
+
 ## Todo
 
 - [ ] Add a flag for skipping frames in video streams.
@@ -154,3 +157,19 @@ This script was developed with the help of various open-source libraries and res
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to open issues or submit PRs.
+
+## Citation
+
+If you find this code useful in your research or project, please consider citing it:
+
+```
+@misc{qaixerabbas/deepds,
+  author = {Qaiser Abbas},
+  title = {DeepDS: Python Tool for Data Creation for Deep Learning & Computer Vision},
+  year = {2023},
+  publisher = {GitHub},
+  journal = {GitHub repository},
+  howpublished = {\url{https://github.com/qaixerabbas/deepds}},
+}
+```
+
