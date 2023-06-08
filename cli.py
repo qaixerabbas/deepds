@@ -1,5 +1,5 @@
 """
-Script Name: DeepDS cli.py
+Script Name: deepds cli.py
 Author: Qaiser Abbas
 Date: June 5, 2023
 Email: mqaiser617@gmail.com
