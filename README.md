@@ -11,9 +11,11 @@ Grab your coffee and let me analyze the data :)
 One command data creation for visual information processing (weakly/self-supervised settings) -->
 &nbsp;
 	  
-DeepDS is an **automatic Video Processing Python** tool that provides an easy-to-use command line interface to autoamte your data creation process for various machine learning tasks. It uses **OpenCV** and **VidGear** at the backend and uses **Optimized Deep Learning** algorithm to analyze and create your datasets with just a single command. 
+DeepDS is an **automatic Video Processing Python** tool that provides an easy-to-use command line interface to autoamte your data creation process for various machine learning / computer vision tasks. It uses **OpenCV** and **VidGear** at the backend and uses **Optimized Deep Learning** algorithm to analyze and create your datasets with just a single command. 
 
 DeepDs primarily focuses on automation of repetetive tasks, and thereby lets ML practitionars & researchers/developers to easily create image datasets from online/offline videos. Additionally you can use your own trained ML models for custom dataset creation tasks.
+
+NOTE: Please read about Weak Annotations & keep it mind that default model might not provide good predictions. Use it only for pre-training or if you have a custom model, use that for data creation.
     
 The output of the data creation project will be directories containing images that are ready to be used for finetuning/training your ML models
    
@@ -116,25 +118,6 @@ Optionally, you can provide ``` --displayframe ``` argument in command line if y
 
 NOTE: Make sure ``` --video_path ```, ``` --destination ```, ``` --custom_model ```, ``` --labels ``` are strings (enclosed in quotation marks)
 
-## Todo
-
-- [ ] Add a flag for skipping frames in video streams
-- [ ] Work with any online videos
-- [ ] Add train_test_split function
-- [ ] Add support for loading open source datasets
-
-## In Progress
-
-- [ ] Working on improving readme and uploading to PyPI. 
-
-## Done ✓
-
-- [x] Capture frames from local & YouTube videos without downloading.
-- [x] Create directories based on class predictions by deep learning model.
-- [x] Arrange the images into a proper imageNet based annotations
-- [x] Add a showframe argument for displaying current frames
-- [x] Add custom model support 
-
 ## LIcense
 	  
 This project is licensed under the [MIT License](https://github.com/qaixerabbas/deepds/blob/master/LICENSE).
@@ -149,22 +132,30 @@ This script was developed with the help of various open-source libraries and res
 
 ## Limitations
 	  
-1. Currently, It only works with the OpenVino optimized model (.xml) files.
-2. It only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
+1. Currently, It only works with the OpenVino optimized model (.xml) files or your custom trained keras (.h5) models.
+2. It (Default Model) only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
+3. If you want to use a custom model, it should be in Keras trained model.
+
+## Todo
+
+- [ ] Add a flag for skipping frames in video streams.
+- [ ] Work with any online videos.
+- [ ] Add train_test_split function.
+- [ ] Add support for PyTorch Models.
+<!-- - [ ] Add support for loading open source datasets -->
+
+## In Progress
+
+- [ ] Working on improving readme.
+
+## Done ✓
+
+- [x] Capture frames from local & YouTube videos without downloading.
+- [x] Create directories based on class predictions by deep learning model.
+- [x] Arrange the images into a proper ImageNet based annotations.
+- [x] Add a showframe argument for displaying current frames.
+- [x] Add custom model support.
 
 ## 🤝 Contributing
 
 Contributions are welcome! Feel free to open issues or submit PRs.
-	  
-### Implementation Ideas
-``` FPS = 30
-Len(Video) = 5 mins
-Total frames = 5 * 60 * 30 => 9000 
-train = 70% of total frames => 6300
-test = 30% of total frames => 2700
-    for frame in frames:
-	if num(frame)<=6300
-	  move to train
-	else:
-	  move to test
-karpathy.github.io/2015/11/14/ai/ ```
