@@ -18,26 +18,22 @@ NOTE: Please read about Weak Annotations & keep it mind that default model might
     
 The output of the data creation project will be directories containing images that are ready to be used for finetuning/training your ML models
    
-    
-    - dataset
-      - Class 1
-        - img_01
-        - img_02
-        .
-        - img_n
-    
-      - Class 2
-        - img_01
-        - img_02
-        .
-        - img_n
-    
-      - Class N
-        - img_01
-        - img_02
-        .
-        - img_n
-    
+```
+custom_dataset/
+    ├── class1/
+    │   ├── image1.jpg
+    │   ├── image2.jpg
+    │   └── ...
+    ├── class2/
+    │   ├── image1.jpg
+    │   ├── image2.jpg
+    │   └── ...
+    ├── class3/
+    │   ├── image1.jpg
+    │   ├── image2.jpg
+    │   └── ...
+    └── ...
+```
 &nbsp;    
     
 <!-- ## Build datasets for computer vision
@@ -132,8 +128,11 @@ This script was developed with the help of various open-source libraries and res
 ## Limitations
 	  
 1. Currently, It only works with the OpenVino optimized model (.xml) files or your custom trained keras (.h5) models.
-2. It (Default Model) only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
-3. If you want to use a custom model, it should be in Keras trained model.
+2. I have not tested on GPU so it might need some modifications to run on GPU.
+3. Custom keras models take longer time to generate dataset (as the tool reads video and classify each frame).
+4. Default model is somehow fast, but it is not very efficient.
+5. It (Default Model) only works with images from ImageNet dataset. Any image category that isn't available in ImageNet will be ignored and randomly(upto some threshold) assigned image class.
+6. If you want to use a custom model, it should be in Keras trained model.
 
 ## Todo
 
