@@ -1,10 +1,10 @@
-<h1 align="center">
+<h1 align="left">
   <!-- <img src="./images/deepds.svg" height="200" width="200"> <br> -->
   <b style="font-size: 26px">DeepDS<b> <br>
 </h1>
 <!--     <p align="center"> Version: 0.1.0 </p> -->
-<p align="center">
-Grab your coffee and let me analyze the data :)
+<p align="left">
+Grab your coffee and let me do the boring intelligent task :)
 </p>
 <!-- # What's DeepDS
 One command data creation for visual information processing (weakly/self-supervised settings) -->
