@@ -1,8 +1,8 @@
-<h2 align="left">
+<h2 align="center">
   <!-- <img src="./images/deepds.svg" height="200" width="200"> <br> -->
   <b style="font-size: 26px">DeepDS: Python Tool for Data Creation for Deep Learning & Computer Vision<b> <br>
 </h2>
-<p align="left">
+<p align="center">
 Grab your coffee and let me do the boring intelligent task :grinning:
 </p>
 &nbsp;
