@@ -1,9 +1,8 @@
 <h1 align="center">
-  <img src="./images/deepds.svg" height="200" width="200"> <br>
+  <!-- <img src="./images/deepds.svg" height="200" width="200"> <br> -->
   <b style="font-size: 26px">DeepDS<b> <br>
 </h1>
 <!--     <p align="center"> Version: 0.1.0 </p> -->
-    
 <p align="center">
 Grab your coffee and let me analyze the data :)
 </p>
