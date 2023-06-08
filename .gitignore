@@ -2,3 +2,4 @@ make_dataset/
 *.mp4
 generated_data/
 documentation/
+*.zip
