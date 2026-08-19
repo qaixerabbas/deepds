@@ -10,7 +10,8 @@ Pillow==10.2.0
 torch==1.13.1
 torchvision==0.14.1
 vidgear==0.3.0
-yt-dlp==2023.9.24
+# yt-dlp==2023.9.24
+yt-dlp
 keras==3.12.0
 openvino==2023.0.0
 tensorflow==2.12.0
