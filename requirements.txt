@@ -1,4 +1,4 @@
-opencv-python==4.7.0.68
+opencv-python==4.8.1.78
 vidgear==0.3.0
 argparse==1.1
 matplotlib==3.6.3
